@@ -1,0 +1,151 @@
+/* ===== Subject Theme Variables ===== */
+
+:root {
+    --subject-primary: #4F46E5;
+    --subject-secondary: #6366F1;
+    --subject-gradient: linear-gradient(135deg, #4F46E5 0%, #4338CA 100%);
+}
+
+/* Apply subject theme to key elements */
+.exam-screen[data-subject="physics"] {
+    --subject-primary: #3B82F6;
+    --subject-secondary: #60A5FA;
+    --subject-gradient: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
+}
+
+.exam-screen[data-subject="chemistry"] {
+    --subject-primary: #10B981;
+    --subject-secondary: #34D399;
+    --subject-gradient: linear-gradient(135deg, #10B981 0%, #059669 100%);
+}
+
+.exam-screen[data-subject="biology"] {
+    --subject-primary: #22C55E;
+    --subject-secondary: #4ADE80;
+    --subject-gradient: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
+}
+
+.exam-screen[data-subject="math"] {
+    --subject-primary: #8B5CF6;
+    --subject-secondary: #A78BFA;
+    --subject-gradient: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);
+}
+
+.exam-screen[data-subject="philosophy"] {
+    --subject-primary: #EC4899;
+    --subject-secondary: #F472B6;
+    --subject-gradient: linear-gradient(135deg, #EC4899 0%, #BE185D 100%);
+}
+
+.exam-screen[data-subject="science"] {
+    --subject-primary: #06B6D4;
+    --subject-secondary: #22D3EE;
+    --subject-gradient: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%);
+}
+
+.exam-screen[data-subject="social"] {
+    --subject-primary: #F59E0B;
+    --subject-secondary: #FBBF24;
+    --subject-gradient: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+}
+
+.exam-screen[data-subject="history"] {
+    --subject-primary: #78716C;
+    --subject-secondary: #A8A29E;
+    --subject-gradient: linear-gradient(135deg, #78716C 0%, #57534E 100%);
+}
+
+.exam-screen[data-subject="geography"] {
+    --subject-primary: #14B8A6;
+    --subject-secondary: #2DD4BF;
+    --subject-gradient: linear-gradient(135deg, #14B8A6 0%, #0D9488 100%);
+}
+
+.exam-screen[data-subject="psychology"] {
+    --subject-primary: #A855F7;
+    --subject-secondary: #C084FC;
+    --subject-gradient: linear-gradient(135deg, #A855F7 0%, #7E22CE 100%);
+}
+
+.exam-screen[data-subject="english"] {
+    --subject-primary: #EF4444;
+    --subject-secondary: #F87171;
+    --subject-gradient: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+}
+
+.exam-screen[data-subject="arabic"] {
+    --subject-primary: #059669;
+    --subject-secondary: #10B981;
+    --subject-gradient: linear-gradient(135deg, #059669 0%, #047857 100%);
+}
+
+.exam-screen[data-subject="other"] {
+    --subject-primary: #6B7280;
+    --subject-secondary: #9CA3AF;
+    --subject-gradient: linear-gradient(135deg, #6B7280 0%, #4B5563 100%);
+}
+
+/* Apply to UI elements */
+.exam-screen .exam-header {
+    background: var(--subject-gradient) !important;
+    color: white;
+}
+
+.exam-screen .timer,
+.exam-screen .question-number-badge,
+.exam-screen .question-points-badge {
+    background: var(--subject-primary) !important;
+    color: white;
+}
+
+.exam-screen .progress-fill {
+    background: var(--subject-primary) !important;
+}
+
+.exam-screen .answer-option:hover,
+.exam-screen .answer-option.selected {
+    border-color: var(--subject-primary) !important;
+    background: rgba(79, 70, 229, 0.1) !important;
+}
+
+.exam-screen .question-nav-item.answered {
+    background: var(--subject-primary) !important;
+    color: white;
+}
+
+.exam-screen .question-nav-item.current {
+    border-color: var(--subject-secondary) !important;
+}
+
+.exam-screen .btn-primary {
+    background: var(--subject-primary) !important;
+}
+
+.exam-screen .btn-primary:hover {
+    background: var(--subject-secondary) !important;
+}
+
+.exam-screen .progress-step.active .step-number {
+    background: var(--subject-primary) !important;
+}
+
+.exam-screen .question-card-template .card-number {
+    background: var(--subject-gradient) !important;
+}
+
+.exam-screen .question-list-item .list-number {
+    background: var(--subject-primary) !important;
+}
+
+.exam-screen .question-grid-item {
+    border-top-color: var(--subject-primary) !important;
+}
+
+.exam-screen .question-grid-item .grid-number {
+    color: var(--subject-primary) !important;
+}
+
+/* Welcome message with subject theme */
+.welcome-message[data-subject] {
+    background: var(--subject-gradient) !important;
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اسألني - منصة الامتحانات الذكية</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <!-- الصفحة الرئيسية -->
+    <div id="app">
+        <div class="landing-page">
+            <header class="header">
+                <div class="container">
+                    <div class="logo">
+                        <h1>📚 اسألني</h1>
+                        <p class="tagline">منصة الامتحانات الذكية</p>
+                    </div>
+                    <nav class="nav">
+                        <button id="loginBtn" class="btn btn-primary">تسجيل دخول المدرس</button>
+                    </nav>
+                </div>
+            </header>
+
+            <main class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <h2>امتحانات أونلاين احترافية بدون تعقيد</h2>
+                        <p class="hero-description">
+                            للمدرسين والسناتر: أنشئ امتحانات، راقب طلابك، صحح تلقائياً - كل ده بدون إيميلات أو حسابات معقدة
+                        </p>
+                        <div class="hero-actions">
+                            <button id="teacherStartBtn" class="btn btn-large btn-primary">ابدأ كمدرس</button>
+                            <button id="studentStartBtn" class="btn btn-large btn-secondary">دخول كطالب</button>
+                        </div>
+                    </div>
+
+                    <div class="features">
+                        <div class="feature-card">
+                            <span class="feature-icon">⚡</span>
+                            <h3>سريع وسهل</h3>
+                            <p>الطالب يدخل بكود فقط، بدون تسجيل</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">🛡️</span>
+                            <h3>مضاد للغش</h3>
+                            <p>مراقبة ذكية للتاب والشاشة</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">✨</span>
+                            <h3>تصحيح تلقائي</h3>
+                            <p>نتائج فورية ما عدا المقالي</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">🎨</span>
+                            <h3>6 قوالب عرض</h3>
+                            <p>اختر الشكل اللي يناسبك</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Student Login Modal -->
+        <div id="studentModal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>دخول الطالب</h2>
+                <form id="studentLoginForm">
+                    <div class="form-group">
+                        <label for="studentCode">كود الطالب</label>
+                        <input type="text" id="studentCode" placeholder="أدخل الكود الخاص بك" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">دخول</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- App Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/utils/storage.js"></script>
+    <script src="js/utils/router.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

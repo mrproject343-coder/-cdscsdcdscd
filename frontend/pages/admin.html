@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة الأدمن - اسألني</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="logo">
+                    <h1>📚 اسألني - لوحة الإدارة</h1>
+                </div>
+                <div class="header-user">
+                    <button id="logoutBtn" class="btn btn-secondary">تسجيل خروج</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard -->
+        <div class="admin-dashboard">
+            <div class="container">
+                <!-- Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span id="totalTeachers" class="stat-value">0</span>
+                        <span class="stat-label">👨‍🏫 المدرسين</span>
+                    </div>
+                    <div class="stat-card secondary">
+                        <span id="totalStudents" class="stat-value">0</span>
+                        <span class="stat-label">👨‍🎓 الطلاب</span>
+                    </div>
+                    <div class="stat-card warning">
+                        <span id="totalExams" class="stat-value">0</span>
+                        <span class="stat-label">📝 الامتحانات</span>
+                    </div>
+                    <div class="stat-card danger">
+                        <span id="totalGroups" class="stat-value">0</span>
+                        <span class="stat-label">👥 المجموعات</span>
+                    </div>
+                    <div class="stat-card">
+                        <span id="totalSubmissions" class="stat-value">0</span>
+                        <span class="stat-label">✅ التسليمات</span>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab active" data-tab="teachers">المدرسين</button>
+                    <button class="tab" data-tab="exams">الامتحانات</button>
+                    <button class="tab" data-tab="announcements">الإعلانات</button>
+                </div>
+
+                <!-- Teachers Tab -->
+                <div id="teachersTab" class="tab-content active">
+                    <div class="section-header">
+                        <h2>إدارة المدرسين</h2>
+                    </div>
+
+                    <div class="filters">
+                        <button class="filter-btn active" data-filter="all">الكل</button>
+                        <button class="filter-btn" data-filter="pending">قيد المراجعة</button>
+                        <button class="filter-btn" data-filter="active">نشط</button>
+                        <button class="filter-btn" data-filter="rejected">مرفوض</button>
+                        <button class="filter-btn" data-filter="suspended">موقوف</button>
+                    </div>
+
+                    <div class="data-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>الاسم</th>
+                                    <th>البريد الإلكتروني</th>
+                                    <th>المادة</th>
+                                    <th>الهاتف</th>
+                                    <th>الحالة</th>
+                                    <th>الإجراءات</th>
+                                </tr>
+                            </thead>
+                            <tbody id="teachersTableBody">
+                                <tr>
+                                    <td colspan="6" style="text-align: center;">جاري التحميل...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Exams Tab -->
+                <div id="examsTab" class="tab-content">
+                    <div class="section-header">
+                        <h2>إدارة الامتحانات</h2>
+                    </div>
+
+                    <div class="data-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>العنوان</th>
+                                    <th>المدرس</th>
+                                    <th>المادة</th>
+                                    <th>المدة</th>
+                                    <th>عدد الأسئلة</th>
+                                    <th>الحالة</th>
+                                    <th>الإجراءات</th>
+                                </tr>
+                            </thead>
+                            <tbody id="examsTableBody">
+                                <tr>
+                                    <td colspan="7" style="text-align: center;">جاري التحميل...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Announcements Tab -->
+                <div id="announcementsTab" class="tab-content">
+                    <div class="section-header">
+                        <h2>إدارة الإعلانات</h2>
+                    </div>
+
+                    <div class="announcement-form">
+                        <h3>إعلان جديد</h3>
+                        <form id="announcementForm">
+                            <div class="form-group">
+                                <textarea id="announcementMessage" rows="4" placeholder="اكتب الإعلان..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">نشر الإعلان</button>
+                        </form>
+                    </div>
+
+                    <div id="announcementsList" class="announcements-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- App Scripts -->
+    <script src="../js/config.js"></script>
+    <script src="../js/utils/storage.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/admin/dashboard.js"></script>
+</body>
+</html>

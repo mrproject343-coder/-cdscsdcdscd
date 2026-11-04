@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوابة الطالب - اسألني</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/student.css">
+    <link rel="stylesheet" href="../css/templates.css">
+    <link rel="stylesheet" href="../css/subjects.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="logo">
+                    <h1>📚 اسألني</h1>
+                </div>
+                <div class="header-user">
+                    <span id="studentName"></span>
+                    <button id="logoutBtn" class="btn btn-secondary">تسجيل خروج</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Portal -->
+        <div class="student-portal">
+            <div class="container">
+                <!-- Welcome -->
+                <div class="welcome-message">
+                    <h2>أهلاً <span id="studentName"></span>!</h2>
+                    <p>مجموعة: <span id="groupName"></span></p>
+                </div>
+
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab active" data-tab="exams">الامتحانات</button>
+                    <button class="tab" data-tab="results">النتائج</button>
+                </div>
+
+                <!-- Exams Tab -->
+                <div id="examsTab" class="tab-content active">
+                    <div class="section-header">
+                        <h2>الامتحانات المتاحة</h2>
+                    </div>
+                    <div id="examsList" class="cards-grid"></div>
+                </div>
+
+                <!-- Results Tab -->
+                <div id="resultsTab" class="tab-content">
+                    <div class="section-header">
+                        <h2>نتائجي</h2>
+                    </div>
+                    <div id="resultsList" class="cards-grid"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exam Screen -->
+        <div id="examScreen" class="exam-screen hidden">
+            <!-- Exam Header -->
+            <div class="exam-header">
+                <div class="container">
+                    <div class="exam-header-content">
+                        <div class="exam-info">
+                            <h2 id="examTitle"></h2>
+                        </div>
+                        <div class="exam-timer">
+                            <span>الوقت المتبقي:</span>
+                            <span id="timer" class="timer">00:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill" style="width: 0%;"></div>
+                </div>
+            </div>
+
+            <!-- Exam Content -->
+            <div class="exam-content">
+                <div id="questionsContainer" class="question-container"></div>
+
+                <!-- Navigation -->
+                <div class="exam-navigation container">
+                    <button id="prevBtn" class="btn">❮ السابق</button>
+                    <button id="submitBtn" class="btn btn-submit">تسليم الامتحان</button>
+                    <button id="nextBtn" class="btn">التالي ❯</button>
+                </div>
+            </div>
+
+            <!-- Question Navigator -->
+            <div id="questionNavigator" class="question-navigator">
+                <div class="question-nav-grid"></div>
+            </div>
+
+            <!-- Auto Save Indicator -->
+            <div id="autoSaveIndicator" class="auto-save-indicator" style="display: none;">
+                <div class="save-spinner"></div>
+                <span>تم الحفظ</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- App Scripts -->
+    <script src="../js/config.js"></script>
+    <script src="../js/utils/storage.js"></script>
+    <script src="../js/utils/subjects.js"></script>
+    <script src="../js/utils/templates.js"></script>
+    <script src="../js/utils/anti-cheat.js"></script>
+    <script src="../js/student/exam.js"></script>
+    <script src="../js/student/portal.js"></script>
+</body>
+</html>

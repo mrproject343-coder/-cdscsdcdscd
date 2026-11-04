@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة المدرس - اسألني</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/teacher.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="logo">
+                    <h1>📚 اسألني</h1>
+                </div>
+                <div class="header-user">
+                    <span id="teacherName"></span>
+                    <button id="logoutBtn" class="btn btn-secondary">تسجيل خروج</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Onboarding Screen -->
+        <div id="onboardingScreen" class="hidden">
+            <div class="onboarding-container">
+                <h2>مرحباً في اسألني! 👋</h2>
+                <p>دعنا نكمل بياناتك أولاً</p>
+                <form id="onboardingForm">
+                    <div class="form-group">
+                        <label>الاسم الكامل</label>
+                        <input type="text" id="teacherNameInput" required>
+                    </div>
+                    <div class="form-group">
+                        <label>رقم الهاتف</label>
+                        <input type="tel" id="teacherPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>المادة</label>
+                        <select id="teacherSubject" required>
+                            <option value="">اختر المادة</option>
+                            <option value="physics">فيزياء</option>
+                            <option value="chemistry">كيمياء</option>
+                            <option value="biology">أحياء</option>
+                            <option value="math">رياضيات</option>
+                            <option value="philosophy">فلسفة</option>
+                            <option value="science">علوم</option>
+                            <option value="social">دراسات</option>
+                            <option value="history">تاريخ</option>
+                            <option value="geography">جغرافيا</option>
+                            <option value="psychology">علم نفس</option>
+                            <option value="english">إنجليزي</option>
+                            <option value="arabic">عربي</option>
+                            <option value="other">أخرى</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">إرسال</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Pending Screen -->
+        <div id="pendingScreen" class="hidden">
+            <div class="status-container">
+                <div class="status-icon">⏳</div>
+                <h2>في انتظار الموافقة</h2>
+                <p>تم استلام طلبك بنجاح. سيتم مراجعته من قبل الإدارة قريباً.</p>
+            </div>
+        </div>
+
+        <!-- Rejected Screen -->
+        <div id="rejectedScreen" class="hidden">
+            <div class="status-container">
+                <div class="status-icon">❌</div>
+                <h2>تم رفض الطلب</h2>
+                <p>عذراً، لم تتم الموافقة على طلبك.</p>
+            </div>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="dashboard" class="hidden">
+            <div class="container">
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab active" data-tab="groups">المجموعات</button>
+                    <button class="tab" data-tab="exams">الامتحانات</button>
+                    <button class="tab" data-tab="results">النتائج</button>
+                </div>
+
+                <!-- Groups Tab -->
+                <div id="groupsTab" class="tab-content active">
+                    <div class="section-header">
+                        <h2>المجموعات</h2>
+                        <button id="addGroupBtn" class="btn btn-primary">+ مجموعة جديدة</button>
+                    </div>
+                    <div id="groupsList" class="cards-grid"></div>
+                </div>
+
+                <!-- Exams Tab -->
+                <div id="examsTab" class="tab-content">
+                    <div class="section-header">
+                        <h2>الامتحانات</h2>
+                        <button id="createExamBtn" class="btn btn-primary">+ امتحان جديد</button>
+                    </div>
+                    <div id="examsList" class="cards-grid"></div>
+                </div>
+
+                <!-- Results Tab -->
+                <div id="resultsTab" class="tab-content">
+                    <div class="section-header">
+                        <h2>النتائج</h2>
+                    </div>
+                    <div id="resultsList"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Group Modal -->
+        <div id="addGroupModal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>مجموعة جديدة</h2>
+                <form id="addGroupForm">
+                    <div class="form-group">
+                        <label>اسم المجموعة</label>
+                        <input type="text" id="groupName" placeholder="مثال: الصف الثالث الثانوي" required>
+                    </div>
+                    <div class="form-group">
+                        <label>رسالة الترحيب (اختياري)</label>
+                        <textarea id="welcomeMessage" rows="3" placeholder="مرحباً بكم..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">إنشاء</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Exam Builder Modal -->
+        <div id="examBuilderModal" class="modal hidden">
+            <div class="modal-content exam-builder">
+                <span class="close">&times;</span>
+                <h2>منشئ الامتحان</h2>
+                
+                <div class="exam-builder-container">
+                    <!-- Exam Details -->
+                    <div class="exam-details">
+                        <div class="form-group">
+                            <label>عنوان الامتحان</label>
+                            <input type="text" id="examTitle" placeholder="مثال: امتحان الفصل الأول" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>المدة (بالدقائق)</label>
+                                <input type="number" id="examDuration" value="60" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label>قالب العرض</label>
+                                <select id="examTemplate" required>
+                                    <option value="template1">قالب 1 - سؤال واحد</option>
+                                    <option value="template2">قالب 2 - صفحة كاملة</option>
+                                    <option value="template3">قالب 3 - بطاقات</option>
+                                    <option value="template4">قالب 4 - قائمة</option>
+                                    <option value="template5">قالب 5 - شبكة</option>
+                                    <option value="template6">قالب 6 - تفاعلي</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>المجموعات</label>
+                            <div id="groupsCheckboxes" class="checkbox-group"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>جدولة الامتحان (اختياري)</label>
+                            <input type="datetime-local" id="examSchedule">
+                        </div>
+                    </div>
+
+                    <!-- Questions Builder -->
+                    <div class="questions-section">
+                        <div class="section-header">
+                            <h3>الأسئلة</h3>
+                            <div class="question-types">
+                                <button type="button" class="btn btn-small" data-type="mcq">اختيار متعدد</button>
+                                <button type="button" class="btn btn-small" data-type="true_false">صح/خطأ</button>
+                                <button type="button" class="btn btn-small" data-type="fill">أكمل</button>
+                                <button type="button" class="btn btn-small" data-type="essay">مقالي</button>
+                                <button type="button" class="btn btn-small" data-type="match">توصيل</button>
+                                <button type="button" class="btn btn-small" data-type="order">ترتيب</button>
+                            </div>
+                        </div>
+
+                        <div id="questionsList" class="questions-list"></div>
+                        
+                        <div class="exam-actions">
+                            <button type="button" id="saveExamBtn" class="btn btn-primary">حفظ كمسودة</button>
+                            <button type="button" id="publishExamBtn" class="btn btn-secondary">نشر الآن</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- App Scripts -->
+    <script src="../js/config.js"></script>
+    <script src="../js/utils/storage.js"></script>
+    <script src="../js/utils/router.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/teacher/exam-builder.js"></script>
+    <script src="../js/teacher/dashboard.js"></script>
+</body>
+</html>
